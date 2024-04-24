@@ -12,4 +12,39 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 - php artisan make:filament-widget LatestOrders --table
 
+## Install Tailwind CSS
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
+## Install Preline UI
+    npm install preline 
+        
+        // tailwind.config.js
+        module.exports = {
+            content: [
+                'node_modules/preline/dist/*.js',
+            ],
+            plugins: [
+                require('preline/plugin'),
+            ],
+        }
+
+    Add the Preline UI JavaScript
+    Add the Preline UI JavaScript in your app entry point app.js
+
+    // index.js
+    import 'preline'
+
+## Install livewire
+
+    composer require livewire/livewire
+
+
+- php artisan make:livewire CreatePost
+
 
