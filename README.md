@@ -10,4 +10,6 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 - php artisan make:filament-relation-manager UserResource orders id
 
+- php artisan make:filament-widget LatestOrders --table
+
 
