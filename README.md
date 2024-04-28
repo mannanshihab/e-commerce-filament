@@ -38,13 +38,13 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
     Add the Preline UI JavaScript in your app entry point app.js
 
     // index.js
-    import 'preline'
+    import 'preline'Creat
 
 ## Install livewire
 
     composer require livewire/livewire
 
 
-- php artisan make:livewire CreatePost
+- php artisan make:livewire successPage
 
 
