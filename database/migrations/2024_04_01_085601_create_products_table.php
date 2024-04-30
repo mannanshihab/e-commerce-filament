@@ -24,6 +24,7 @@ return new class extends Migration
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_stack')->default(true);
             $table->boolean('on_sale')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

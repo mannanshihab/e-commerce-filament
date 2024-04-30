@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('shiping_amount', 10, 2)->nullable();
             $table->string('shiping_method')->nullable();
             $table->text('notes')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
