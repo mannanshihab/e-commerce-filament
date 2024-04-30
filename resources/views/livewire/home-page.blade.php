@@ -62,7 +62,7 @@
                     </a>
                     <div class="p-5 text-center">
                     <a href="" class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-300">
-                        Apple
+                        {{ $brand->name }}
                     </a>
                     </div>
                 </div>

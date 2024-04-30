@@ -28,10 +28,10 @@ class Product extends Model
     ];
 
     public function category(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class)->where('is_active', 1);
     }
     public function brand(){
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class)->where('is_active', 1);;
     }
     public function orderItems(){
         return $this->hasMany(OrderItem::class);
