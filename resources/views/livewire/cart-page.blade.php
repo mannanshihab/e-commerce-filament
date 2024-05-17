@@ -1,8 +1,10 @@
 <div>
     <div class="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+        @if($cart_items)
         <div class="container mx-auto px-4">
             <h1 class="text-2xl font-semibold mb-4">Shopping Cart</h1>
             <div class="flex flex-col md:flex-row gap-4">
+            
             <div class="md:w-3/4">
                 <div class="bg-white overflow-x-auto rounded-lg shadow-md p-6 mb-4">
                 <table class="w-full">
@@ -48,6 +50,7 @@
                 </table>
                 </div>
             </div>
+           
             <div class="md:w-1/4">
                 <div class="bg-white rounded-lg shadow-md p-6">
                 <h2 class="text-lg font-semibold mb-4">Summary</h2>
@@ -75,5 +78,10 @@
             </div>
             </div>
         </div>
+        @else
+        <div class="container mx-auto px-4">
+            <h1 class="text-center py-4 font-semibold text-slate-500">No Items are avilable in Cart</h1>
+        </div>
+        @endif
     </div>
 </div>
