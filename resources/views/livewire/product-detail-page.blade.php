@@ -4,16 +4,20 @@
       <div class="flex flex-wrap -mx-4">
         <div class="w-full mb-8 md:w-1/2 md:mb-0" x-data="{ mainImage: '{{ url('storage', $product -> images[0] )}}' }">
           <div class="">
-            <div class="relative mb-6 lg:mb-10 lg:h-2/4 ">
+            <!-- main image -->
+            <div class="relative mb-3 lg:mb-10 lg:h-2/4 ">
               <img x-bind:src="mainImage" alt="" class="object-cover w-full lg:h-full ">
-            </div>
-            <div class="flex-wrap hidden md:flex ">
-              @foreach( $product -> images as $image)
-              <div class="w-1/2 p-2 sm:w-1/4" x-on:click="mainImage='{{ url('storage', $image )}}'">
-                <img src="{{ url('storage', $image )}}" alt="{{ $product -> name }}" class="object-cover w-full lg:h-20 cursor-pointer hover:border hover:border-blue-500">
-              </div>
-              @endforeach
-            </div>
+            </div><!--end main image -->
+
+            <!-- other images -->
+            <div class="flex justify-center">
+                @foreach($product->images as $image)
+                    <div class="m-2 border border-gray-300 dark:border-gray-700" x-on:click="mainImage='{{ url('storage', $image) }}'">
+                        <img src="{{ url('storage', $image) }}" alt="{{ $product->name }}" class="object-cover p-0 w-16 lg:h-20 cursor-pointer hover:border hover:border-blue-500">
+                    </div>
+                @endforeach
+            </div><!--End other images -->
+
             <div class="px-6 pb-6 mt-6 border-t border-gray-300 dark:border-gray-400 ">
               <div class="flex flex-wrap items-center mt-6">
                 <span class="mr-2">
@@ -43,11 +47,11 @@
             <div class="w-32 mb-8 ">
               <label for="" class="w-full pb-1 text-xl font-semibold text-gray-700 border-b border-blue-300 dark:border-gray-600 dark:text-gray-400">Quantity</label>
               <div class="relative flex flex-row w-full h-10 mt-6 bg-transparent rounded-lg">
-                <button wire:click='decreseQty' class="w-20 h-full text-gray-600 bg-gray-300 rounded-l outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 hover:text-gray-700 dark:bg-gray-900 hover:bg-gray-400">
+                <button wire:click='decreaseQty({{ $product->id }})' class="w-20 h-full text-gray-600 bg-gray-300 rounded-l outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 hover:text-gray-700 dark:bg-gray-900 hover:bg-gray-400">
                   <span class="m-auto text-2xl font-thin">-</span>
                 </button>
                 <input type="number" wire:model='quantity' readonly class="flex items-center w-full font-semibold text-center text-gray-700 placeholder-gray-700 bg-gray-300 outline-none dark:text-gray-400 dark:placeholder-gray-400 dark:bg-gray-900 focus:outline-none text-md hover:text-black" placeholder="1">
-                <button wire:click='increseQty' class="w-20 h-full text-gray-600 bg-gray-300 rounded-r outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 hover:bg-gray-400">
+                <button wire:click='increaseQty({{ $product->id }})' class="w-20 h-full text-gray-600 bg-gray-300 rounded-r outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 hover:bg-gray-400">
                   <span class="m-auto text-2xl font-thin">+</span>
                 </button>
               </div>

@@ -43,8 +43,12 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 ## Install livewire
 
     composer require livewire/livewire
+    
+    - php artisan make:livewire successPage
 
-
-- php artisan make:livewire successPage
+## Deployment
+    php artisan view:clear
+    php artisan route:clear
+    php artisan cache:clear
 
 

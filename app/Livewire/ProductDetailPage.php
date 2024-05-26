@@ -19,10 +19,10 @@ class ProductDetailPage extends Component
         $this->slug = $slug;
     }
 
-    public function increseQty(){
+    public function increaseQty(){
         $this->quantity++;
     }
-    public function decreseQty(){
+    public function decreaseQty(){
         if($this->quantity > 1){
             $this->quantity--;
         }
