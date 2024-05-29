@@ -46,6 +46,7 @@ class CategoryResource extends Resource
                         ]),
                         Forms\Components\FileUpload::make('image')
                             ->image()
+                            ->optimize('webp')
                             ->directory('categories'),
                         Forms\Components\Toggle::make('is_active')
                             ->required()

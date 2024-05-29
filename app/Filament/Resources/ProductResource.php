@@ -61,6 +61,7 @@ class ProductResource extends Resource
                     Section::make('Images')->schema([
                         FileUpload::make('images')
                             ->multiple()
+                            ->optimize('webp')
                             ->directory('Products')
                             ->maxFiles(5)
                             ->reorderable()
