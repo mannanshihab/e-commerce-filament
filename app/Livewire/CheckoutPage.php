@@ -7,6 +7,9 @@ use App\Models\Address;
 use App\Models\Order;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
+
 #[Title('Cheakout')]
 class CheckoutPage extends Component
 {
@@ -77,16 +80,31 @@ class CheckoutPage extends Component
         $address -> state = $this->state;
         $address -> zip_code = $this->zip_code;
 
-        $redirect_url = route('success');
+        $redirect_url = "";
 
-        
+        #stripe
+        if($this->payment_method == 'stripe'){
+            Stripe::setApiKey(env('STRIPE_SECRET'));
+            $sesstionCheckOut = Session::create([
+                'payment_method_types' => ['card'],
+                'customer_email' => auth()->user()->email,
+                'line_items' => $line_items,
+                'mode' => 'payment',
+                'success_url' => route('success') . '?session_id = {CHECKOUT_SESSION}',
+                'cancel_url' => route('success'),
+            ]);
+
+            $redirect_url = $sesstionCheckOut->url;
+        }else{
+            $redirect_url = route('success');
+        }
 
         $order->save();
         $address->order_id = $order->id;
         $address->save();
         $order->items()->createMany($cart_items);
         CartManagement::clearCartItemsFromCookie();
-
+        #Mail
         return redirect($redirect_url);
     }
     public function render()
