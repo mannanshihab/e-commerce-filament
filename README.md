@@ -51,4 +51,5 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
     php artisan route:clear
     php artisan cache:clear
 
-
+## MarkDwon Mailable
+    php artisan make:mail OrderPlaced --markdown=mail.orders.placed  
