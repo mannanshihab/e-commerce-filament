@@ -103,10 +103,9 @@ class OrderResource extends Resource
                                     'inr' => 'INR',
                                     'usd' => 'USD',
                                     'eur' => 'EUR',
-                                    'tk' => 'TK',
+                                    'tk' => 'BDT',
                                 ])
-                                ->default('tk')
-                                ->required(),
+                                ->default('BDT'),
                         Select::make('shiping_method')
                                 ->options([
                                     'fedex' => 'Fedex',
