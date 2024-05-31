@@ -96,7 +96,7 @@
                 <div class="flex flex-wrap mb-24 -mx-3">
                     <div class="w-full px-3">
                         <!-- product -->
-                        <div class="flex flex-wrap items-center">
+                        <div class="flex flex-wrap justify-center">
                             @foreach( $products as $product)
                             <div class="w-64 h-96 px-3 mb-6 sm:w-2/2 md:w-1/4 " wire:key="{{ $product -> id }}">
                                 <div class="border border-gray-300 dark:border-gray-700">

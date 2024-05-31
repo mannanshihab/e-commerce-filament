@@ -40,6 +40,12 @@ class UserResource extends Resource
                 ->unique(ignoreRecord:true)
                 ->maxLength(255)
                 ->email(),
+                
+                Forms\Components\Select::make('role')
+                ->options(User::ROLES)
+                ->searchable()
+                ->preload()
+                ->required(),
 
                 Forms\Components\DateTimePicker::make('email_verified_at')
                 ->label('Email Verified')
@@ -57,6 +63,8 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                ->searchable(),
+                Tables\Columns\TextColumn::make('role')
                 ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                 ->searchable()

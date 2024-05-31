@@ -52,4 +52,13 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
     php artisan cache:clear
 
 ## MarkDwon Mailable
+
     php artisan make:mail OrderPlaced --markdown=mail.orders.placed  
+
+## User Role Permission
+
+    php artisan make:policy UserPolicy --model=User
+    php artisan make:policy BrandPolicy --model=Brand
+    php artisan make:policy CategoryPolicy --model=Category
+    php artisan make:policy OrderPolicy --model=Order
+    php artisan make:policy ProductPolicy --model=Product

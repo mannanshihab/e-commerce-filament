@@ -11,11 +11,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use PhpParser\Node\Stmt\Return_;
 
 class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, SoftDeletes, Notifiable;
 
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +27,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -50,10 +53,33 @@ class User extends Authenticatable implements FilamentUser
     public function orders(){
         return $this->hasMany(Order::class);
     }
+    
+    const ROLE_SUPER_ADMIN  = 'super-admin';
+    const ROLE_ADMIN        = 'admin';
+    const ROLE_MODERATOR    = 'moderator';
+    const ROLE_USER         = 'user';
+    
+    const ROLES = [
+        self::ROLE_SUPER_ADMIN  => 'super-admin',
+        self::ROLE_ADMIN        => 'admin',
+        self::ROLE_MODERATOR    => 'moderator',
+        self::ROLE_USER         => 'user',
+    ];
+
     public function canAccessPanel(Panel $panel): bool
     {
-        //return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
-        return $this->email == 'admin@test.com';
-        
+        //return $this->can('view-admin', User::class);
+        return $this->SuperAdmin() || $this->Admin() || $this->Moderator();
     }
+
+    public function SuperAdmin(){
+        return $this->role === self::ROLE_SUPER_ADMIN;
+    }
+    public function Admin(){
+        return $this->role === self::ROLE_ADMIN; 
+    }
+    public function Moderator(){
+        return $this->role === self::ROLE_MODERATOR;
+    }
+
 }
