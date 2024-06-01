@@ -81,7 +81,7 @@ class ProductsPage extends Component
 
 
         return view('livewire.products-page',[
-            'products' => $productQuery->simplePaginate(9),
+            'products' => $productQuery->Paginate(9),
             'brands' => Brand::where('is_active', 1)->get(['id', 'name', 'slug']),
             'categories' => Category::where('is_active', 1)->get(['id', 'name', 'slug']),
         ]);

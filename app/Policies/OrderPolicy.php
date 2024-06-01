@@ -29,7 +29,7 @@ class OrderPolicy
      */
     public function create(User $user): bool
     {
-        return $user->SuperAdmin() || $user->Admin() || $user->Moderator();
+        return $user->SuperAdmin() || $user->Admin();
     }
 
     /**
@@ -37,7 +37,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order): bool
     {
-        return $user->SuperAdmin() || $user->Admin() || $user->Moderator();
+        return $user->SuperAdmin() || $user->Admin();
     }
 
     /**

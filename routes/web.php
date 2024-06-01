@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
     Route::get('/create-storage-link', function () {
         \Illuminate\Support\Facades\Artisan::call('storage:link');
+        //return redirect()->route('admin.dashboard');
     });
 |
 */
