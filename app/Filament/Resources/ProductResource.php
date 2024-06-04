@@ -138,6 +138,7 @@ class ProductResource extends Resource
                     ->relationship('category', 'name')
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -159,6 +160,7 @@ class ProductResource extends Resource
         return [
             'index' => Pages\ListProducts::route('/'),
             'create' => Pages\CreateProduct::route('/create'),
+            'view' => Pages\ViewProduct::route('/{record}'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }

@@ -37,7 +37,7 @@ class ProductPolicy
      */
     public function update(User $user, Product $product): bool
     {
-        return $user->SuperAdmin() || $user->Admin() || $user->Moderator();
+        return $user->SuperAdmin() || $user->Admin();
     }
 
     /**

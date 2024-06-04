@@ -12,6 +12,8 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 - php artisan make:filament-widget LatestOrders --table
 
+- php artisan make:filament-page ViewCategory --resource=CategoryResource --type=ViewRecord
+
 ## Install Tailwind CSS
     npm install -D tailwindcss postcss autoprefixer
     npx tailwindcss init -p

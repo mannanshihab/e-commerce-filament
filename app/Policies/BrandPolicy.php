@@ -37,7 +37,7 @@ class BrandPolicy
      */
     public function update(User $user, Brand $brand): bool
     {
-        return $user->SuperAdmin() || $user->Admin() || $user->Moderator();
+        return $user->SuperAdmin() || $user->Admin();
     }
 
     /**

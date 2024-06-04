@@ -37,7 +37,7 @@ class CategoryPolicy
      */
     public function update(User $user, Category $category): bool
     {
-        return $user->SuperAdmin() || $user->Admin() || $user->Moderator();
+        return $user->SuperAdmin() || $user->Admin();
     }
 
     /**
