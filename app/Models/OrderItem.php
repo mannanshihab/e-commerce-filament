@@ -23,6 +23,6 @@ class OrderItem extends Model
     }
 
     public function product(){
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class)->where('is_active', 1);
     }
 }

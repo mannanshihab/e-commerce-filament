@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -55,9 +56,18 @@ class ProductResource extends Resource
 
                         MarkdownEditor::make('description')
                             ->columnSpanFull()
-                            ->fileAttachmentsDirectory('Products')
+                            ->fileAttachmentsDirectory('Products'),
                     ])->columns(2),
-
+                    Section::make('Product Specification')->schema([
+                        Repeater::make('New')
+                        ->relationship('ProductSpecification')
+                        ->schema([
+                            TextInput::make('name')
+                                ->required(),
+                            TextInput::make('value')
+                                ->required()
+                        ])->columns(2),   
+                    ]),
                     Section::make('Images')->schema([
                         FileUpload::make('images')
                             ->multiple()
@@ -73,7 +83,7 @@ class ProductResource extends Resource
                         TextInput::make('price')
                             ->numeric()
                             ->required()
-                            ->prefix('Taka')
+                            ->prefix('BDT')
                     ]),
                     Section::make('Association')->schema([
                         Select::make('category_id')

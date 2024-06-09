@@ -44,7 +44,7 @@ class ProductsPage extends Component
 
     public function render()
     {
-        $productQuery = Product::query()->where('is_active', 1);
+        $productQuery = Product::query()->where('is_active', 1)->orderByDesc('created_at');;
 
         //FIlter Category
         if(!empty($this->selected_categories)){
