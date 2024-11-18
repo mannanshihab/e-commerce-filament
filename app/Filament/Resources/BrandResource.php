@@ -47,6 +47,7 @@ class BrandResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->image()
                             ->optimize('webp')
+                            ->disk('real_public')
                             ->directory('brands'),
                         Forms\Components\Toggle::make('is_active')
                             ->required()

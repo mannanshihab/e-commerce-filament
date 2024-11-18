@@ -74,6 +74,7 @@ class ProductResource extends Resource
                         FileUpload::make('images')
                             ->multiple()
                             ->optimize('webp')
+                            ->disk('real_public')
                             ->directory('Products')
                             ->maxFiles(5)
                             ->reorderable()
